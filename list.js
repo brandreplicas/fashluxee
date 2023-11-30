@@ -1,4 +1,5 @@
 var srcs = [
+'https://github.com/branad9/stock/raw/main/782063f981a84b049250f64a6b4d18e6.mp4',
 'https://i.postimg.cc/Fs2WVbxz/02620df3b2ba4ce384c4987f0e07885.jpg',
 'https://i.postimg.cc/X7M1wcLJ/0699678046984f569754ca63f6ed2ed.jpg',
 'https://i.postimg.cc/mkdxrcxM/093de32f9721468abe6225bffa303a0.jpg',
