@@ -24,8 +24,8 @@ function img_fn(imgs){
       if(!src) continue;
       if(vdos.test(src)){
         media = [
-          '<video class="gallery-image" autoplay="" muted="" playsinline="">',
-          '<source src="',src,'" type="video/',src.split('.').pop(),'"/>',
+          '<video class="gallery-image" autoplay="" muted="" playsinline="" loop="">',
+          	'<source src="',src,'" type="video/',src.split('.').pop(),'"/>',
           '</video>'
         ].join('');
       } else if(poto.test(src)){
