@@ -1,4 +1,10 @@
 var srcs = [
+'https://github.com/branad9/stock/raw/main/0a1f3ff857eb4226b0d6dd4405d4d595.mp4',
+'https://github.com/branad9/stock/raw/main/5720da63b3d94362a8f85c77dd8924e9.mp4',
+'https://github.com/branad9/stock/raw/main/9fcfcf86d8f446048b5a0102dfb4ede2.mp4',
+'https://github.com/branad9/stock/raw/main/ba6417bfe41b432d8701139beb9d3e42.mp4',
+'https://github.com/branad9/stock/raw/main/e0fcbfffbeee44f09e5989f433b7e4fc.mp4',
+'https://github.com/branad9/stock/raw/main/f3623c88b3e74f7a916dd417c07d0e31.mp4',
 'https://i.postimg.cc/B6rRkySd/004cb63e20394fda9766f81b1d924d9c.jpg',
 'https://i.postimg.cc/zvMYzBFP/007bea63794d46378f4f9368eca2e73d.jpg',
 'https://i.postimg.cc/TY9HJhb8/03ddf3013c5e40239f6026b10cee8c1a.jpg',
