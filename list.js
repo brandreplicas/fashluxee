@@ -17311,4 +17311,3 @@ var srcs = [
 ,'https://i.imgur.com/X5dkrFV.jpg',
 ,'https://i.imgur.com/KruG32p.jpg'
 ];
-img_fn(srcs);
