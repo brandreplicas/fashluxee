@@ -14,7 +14,7 @@
     <meta name="p:domain_verify" content="887f26014a6f5300fa40a3d80d04f91d"/>
     <meta property="og:site_name" content="Gallery" />
     <title>Fashluxee - Gallery</title>
-    <link rel="stylesheet" href="style.css?_=1.1.5"/>
+    <link rel="stylesheet" href="style.css?_=1.1.7"/>
   </head>
   <body>
     <header>
@@ -30,6 +30,10 @@
                     Call <a class="d-link" href="tel: +919503021689" style="margin-right:3rem;" target="_blank">+919503021689</a><br/>
                     WhatsApp <a class="d-link" href="https://wa.me/919503021689?text=Hi%20Fashluxee" target="_blank">+919503021689</a><br/>
                     Email <a class="d-link" href="mailto: brandreplicastore@gmail.com?cc=tanzil.memon03@gmail.com&subject=Fashluxee%20Catalogue%20Enquiry&body=Hi%20Fashluxee%2C" target="_blank">brandreplicastore@gmail.com</a>
+                    <div>
+                        Category
+                        <select id="cat"></select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,10 +43,16 @@
         <div class="container">
             <div class="gallery"></div>
             <div class="loader"></div>
-            <p style="text-align:center;">Please <a href="">refresh</a> the page, if you see this message for more than 2 seconds.</p>
+            <p id="load-note"  class="text-center">Please <a href="">refresh</a> the page, if you see this message for more than 2 seconds.</p>
+            <p id="no-result" class="text-center d-none">Nothing found here. Please try different category.</p>
         </div>
     </main>
-    <script src="list.js?_=1.1.25" type="text/javascript"></script>
-    <script src="script.js?_=1.1.25" type="text/javascript"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'script.js?_=' + Date.now();
+            document.head.appendChild(scriptElement);
+        });
+    </script>
   </body>
 </html>

@@ -1,64 +1,117 @@
 'use strict';
+(function(){
+    var msg = encodeURIComponent('Hi Fashluxee,\nI would like to talk about this item: \n\n ');
+    var phone = '919503021689';
+    var wsl = 'https://api.whatsapp.com/send?phone='+phone+'&text='+msg;
+    var vdos = /(mp4|3gp|ogg)$/;
+    var poto = /(png|jpg|jpeg|gif)$/;
+    var pos = -1;
+    var mail_to='mailto:brandreplicastore@gmail.com?cc=tanzil.memon03@gmail.com&subject=Catalog%20Product%20Enquiry&body=';
+    var listEl = document.querySelector('.gallery');
+    var lastEl = document.querySelector('.loader');
+    var catEl = document.querySelector('#cat');
+    var noteEl = document.querySelector('#load-note');
+    var resEl = document.querySelector('#no-result');
+    var datUrl = 'http://tecq.free.nf/carrd-db/cros';
+    var catUrl = datUrl + '/category-list.php';
+    var medUrl = datUrl + '/media-list.php';
+    var pos = 0;
 
-var msg = encodeURIComponent('Hi Fashluxee,\nI would like to talk about this item: \n\n ');
-var phone = '919503021689';
-var wsl = 'https://api.whatsapp.com/send?phone='+phone+'&text='+msg;
-var vdos = /(mp4|3gp|ogg)$/;
-var poto = /(png|jpg|jpeg|gif)$/;
-var pos = -1;
-var mail_to='mailto:brandreplicastore@gmail.com?cc=tanzil.memon03@gmail.com&subject=Catalog%20Product%20Enquiry&body=';
+    fetch(catUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Bad network response');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('categories',data);
+        data.forEach(item => {
+            var option = document.createElement('option');
+            option.value = item.value;
+            option.textContent = item.text;
+            catEl.appendChild(option);
+        });
+        loadMore();
+    })
+    .catch(error => {
+        console.error('Category Error: There was a problem fetching the category list:', error);
+    });
 
-function outViewport(el){
-  var rect = el.getBoundingClientRect();
-  return rect.bottom < 0 || rect.right < 0 || rect.left > window.innerWidth || rect.top > window.innerHeight;
-}
-
-function img_fn(imgs){
-  var listEl = document.querySelector('.gallery');
-  var lastEl = document.querySelector('.loader');
-  function loadMore(){
-    var ihtml = '';
-    var src, wa_link, media, email, link;
-    for(var i = 1; 3 >= i; i ++){
-      src = imgs[++pos];
-      if(!src) continue;
-      if(vdos.test(src)){
-        media = [
-          '<video class="gallery-image" autoplay="" muted="" playsinline="" loop="">',
-            '<source src="',src,'" type="video/',src.split('.').pop(),'"/>',
-          '</video>'
-        ].join('');
-      } else if(poto.test(src)){
-        media = ['<img src="',src,'" class="gallery-image"/>'].join('');
-      } else {
-        continue;
-      }
-      link = encodeURIComponent(src);
-      wa_link = wsl + link;
-      email = mail_to + msg + link;
-      ihtml += [
-        '<div class="gallery-item" tabindex="0">',
-          media,
-          '<div class="gallery-item-info">',
-            'Connect on:',
-            '<a class="d-link" target="_blank" href="',wa_link,'">WhatsApp</a>',
-            '<a class="d-link" target="_blank" href="',email,'">Email</a>',
-          '</div>',
-        '</div>'
-      ].join('');
+    function outViewport(el){
+        var rect = el.getBoundingClientRect();
+        return (
+            rect.bottom < 0 || 
+            rect.right < 0 || 
+            rect.left > window.innerWidth || 
+            rect.top > window.innerHeight
+        );
     }
-    if(ihtml){
-      listEl.innerHTML += ihtml;
+
+    function loadMore(){
+        var ihtml = '';
+        var src, wa_link, media, email, link;
+        var cat_id = catEl.value;
+        fetch([medUrl,'?pos=',pos,'&cat_id=',cat_id].join(''))
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Bad network response');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('medias',data);
+            if(!data.length){
+                noteEl.classList.add('d-none');
+                lastEl.classList.add('d-none');
+                resEl.classList.remove('d-none');
+                return;
+            }
+            pos += data.length;
+            data.forEach(src => {
+                if(vdos.test(src)){
+                    media = [
+                    '<video class="gallery-image" autoplay="" muted="" playsinline="" loop="">',
+                        '<source src="',src,'" type="video/',src.split('.').pop(),'"/>',
+                    '</video>'
+                    ].join('');
+                } else if(poto.test(src)){
+                    media = ['<img src="',src,'" class="gallery-image"/>'].join('');
+                }
+                link = encodeURIComponent(src);
+                wa_link = wsl + link;
+                email = mail_to + msg + link;
+                ihtml += [
+                    '<div class="gallery-item" tabindex="0">',
+                    media,
+                    '<div class="gallery-item-info">',
+                        'Connect on:',
+                        '<a class="d-link" target="_blank" href="',wa_link,'">WhatsApp</a>',
+                        '<a class="d-link" target="_blank" href="',email,'">Email</a>',
+                    '</div>',
+                    '</div>'
+                ].join('');
+                listEl.innerHTML += ihtml;
+            });
+        })
+        .catch(error => {
+            console.error('Category Error: There was a problem fetching the category list:', error);
+        });
     }
-  }
 
-  function scroller() {
-    if (outViewport(lastEl))return;
-    loadMore();
-  }
-  document.addEventListener("scroll", scroller, false);
-  loadMore();
-}
+    function scroller() {
+        if (outViewport(lastEl))return;
+        loadMore();
+    }
 
-img_fn(srcs);
+    document.addEventListener("scroll", scroller, false);
 
+    catEl.addEventListener("change", function(){
+        pos = 0;
+        listEl.innerHTML = '';
+        noteEl.classList.remove('d-none');
+        lastEl.classList.remove('d-none');
+        resEl.classList.add('d-none');
+        loadMore();
+    }, false);
+})();

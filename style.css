@@ -340,3 +340,9 @@ img,video {
     color: #4d90fe;
     text-decoration:none;
 }
+.d-none{
+    display: none;
+}
+.text-center{
+    text-align: center;
+}
