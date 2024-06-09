@@ -12,7 +12,7 @@
     var catEl = document.querySelector('#cat');
     var noteEl = document.querySelector('#load-note');
     var resEl = document.querySelector('#no-result');
-    var datUrl = 'https://watchotimeonline.in/carrd-db/cros';
+    var datUrl = 'https://urlsml.in/carrd-db/cors';
     var catUrl = datUrl + '/category-list.php';
     var medUrl = datUrl + '/media-list.php';
     var pos = 0;
