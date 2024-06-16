@@ -54,10 +54,8 @@
             return;
         }
         moreLocked = true;
-        var ihtml = '';
-        var src, wa_link, media, email, link;
         var cat_id = catEl.value;
-        fetch([medUrl,'?pos=',pos,'&cat_id=',cat_id].join(''))
+        fetch([medUrl,'?pos=',pos,'&cat_id=',cat_id,'&ts=',Date.now()].join(''))
         .then(response => {
             if (!response.ok) {
                 throw new Error('Bad network response');
@@ -75,6 +73,7 @@
             }
             pos += data.length;
             data.forEach(src => {
+                var media = '';
                 if(vdos.test(src)){
                     media = [
                     '<video class="gallery-image" autoplay="" muted="" playsinline="" loop="">',
@@ -84,10 +83,10 @@
                 } else if(poto.test(src)){
                     media = ['<img src="',src,'" class="gallery-image"/>'].join('');
                 }
-                link = encodeURIComponent(src);
-                wa_link = wsl + link;
-                email = mail_to + msg + link;
-                ihtml += [
+                var link = encodeURIComponent(src);
+                var wa_link = wsl + link;
+                var email = mail_to + msg + link;
+                listEl.innerHTML += [
                     '<div class="gallery-item" tabindex="0">',
                     media,
                     '<div class="gallery-item-info">',
@@ -97,7 +96,6 @@
                     '</div>',
                     '</div>'
                 ].join('');
-                listEl.innerHTML += ihtml;
             });
         })
         .catch(error => {
