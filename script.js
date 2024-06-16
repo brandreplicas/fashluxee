@@ -48,7 +48,12 @@
         );
     }
 
+    var moreLocked = false;
     function loadMore(){
+        if(moreLocked){
+            return;
+        }
+        moreLocked = true;
         var ihtml = '';
         var src, wa_link, media, email, link;
         var cat_id = catEl.value;
@@ -60,6 +65,7 @@
             return response.json();
         })
         .then(data => {
+            moreLocked = false;
             console.log('medias',data);
             if(!data.length){
                 noteEl.classList.add('d-none');
