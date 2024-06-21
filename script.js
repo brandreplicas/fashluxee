@@ -12,6 +12,7 @@
     var catEl = document.querySelector('#cat');
     var noteEl = document.querySelector('#load-note');
     var resEl = document.querySelector('#no-result');
+    var hadEl = document.querySelector('#last-result');
     var datUrl = 'https://urlsml.in/carrd-db/cors';
     var catUrl = datUrl + '/category-list.php';
     var medUrl = datUrl + '/media-list.php';
@@ -68,7 +69,11 @@
             if(!data.length){
                 noteEl.classList.add('d-none');
                 lastEl.classList.add('d-none');
-                resEl.classList.remove('d-none');
+                if(!pos){
+                    resEl.classList.remove('d-none');
+                } else {
+                    hadEl.classList.remove('d-none');
+                }
                 return;
             }
             pos += data.length;
@@ -116,6 +121,7 @@
         noteEl.classList.remove('d-none');
         lastEl.classList.remove('d-none');
         resEl.classList.add('d-none');
+        hadEl.classList.add('d-none');
         loadMore();
     }, false);
 })();
