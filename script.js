@@ -3,8 +3,8 @@
     var msg = encodeURIComponent('Hi Fashluxee,\nI would like to talk about this item: \n\n ');
     var phone = '919503021689';
     var wsl = 'https://api.whatsapp.com/send?phone='+phone+'&text='+msg;
-    var vdos = /(mp4|3gp|ogg)$/;
-    var poto = /(png|jpg|jpeg|gif)$/;
+    var vdos = /(mp4|3gp|ogg)/;
+    var poto = /(png|jpg|jpeg|gif)/;
     var pos = -1;
     var mail_to='mailto:brandreplicastore@gmail.com?cc=tanzil.memon03@gmail.com&subject=Catalog%20Product%20Enquiry&body=';
     var listEl = document.querySelector('.gallery');
