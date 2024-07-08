@@ -79,14 +79,14 @@
             pos += data.length;
             data.forEach(src => {
                 var media = '';
-                if(vdos.test(src)){
+                 if(poto.test(src)){
+                    media = ['<img src="',src,'" class="gallery-image"/>'].join('');
+                } else if(vdos.test(src)){
                     media = [
                     '<video class="gallery-image" autoplay="" muted="" playsinline="" loop="">',
                         '<source src="',src,'" />',
                     '</video>'
                     ].join('');
-                } else if(poto.test(src)){
-                    media = ['<img src="',src,'" class="gallery-image"/>'].join('');
                 }
                 var link = encodeURIComponent(src);
                 var wa_link = wsl + link;
