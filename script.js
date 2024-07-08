@@ -82,7 +82,7 @@
                 if(vdos.test(src)){
                     media = [
                     '<video class="gallery-image" autoplay="" muted="" playsinline="" loop="">',
-                        '<source src="',src,'" type="video/',src.split('.').pop(),'"/>',
+                        '<source src="',src,'" />',
                     '</video>'
                     ].join('');
                 } else if(poto.test(src)){
