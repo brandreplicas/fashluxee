@@ -100,7 +100,7 @@
                         '<a class="d-link" target="_blank" href="',wa_link,'">WhatsApp</a>',
                         '<a class="d-link" target="_blank" href="',email,'">Email</a>',
                         '<br/>',
-                        '<a class="d-link" target="_blank" download="',basename,'" href="',src,'">Save</a>'
+                        '<a class="d-link" target="_blank" download="',basename,'" href="',src,'">Save</a>',
                     '</div>',
                     '</div>'
                 ].join('');
