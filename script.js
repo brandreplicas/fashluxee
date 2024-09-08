@@ -78,6 +78,7 @@
             }
             pos += data.length;
             data.forEach(src => {
+                var basename = src.split('/').pop();
                 var media = '';
                  if(poto.test(src)){
                     media = ['<img src="',src,'" class="gallery-image"/>'].join('');
@@ -98,6 +99,8 @@
                         'Connect on:',
                         '<a class="d-link" target="_blank" href="',wa_link,'">WhatsApp</a>',
                         '<a class="d-link" target="_blank" href="',email,'">Email</a>',
+                        '<br/>',
+                        '<a class="d-link" target="_blank" download="',basename,'" href="',src,'">Save</a>'
                     '</div>',
                     '</div>'
                 ].join('');
