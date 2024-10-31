@@ -102,6 +102,7 @@
                     '</div>'
                 ].join('');
             });
+            scroller();
         })
         .catch(error => {
             console.error('Category Error: There was a problem fetching the category list:', error);
