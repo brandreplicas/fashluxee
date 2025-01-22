@@ -147,9 +147,9 @@ if ('Notification' in window) {
 function sendNotification(title, body) {
   if (Notification.permission === 'granted') {
     new Notification(title, {
-      body: body,         // The notification text
-      icon: '/preview.png',   // Optional icon
-      tag: 'stock-update',   // Optional tag to identify notifications
+      body: body,
+      icon: 'fashluxee-logo-transformed.png',
+      tag: 'stock-update',
     });
   } else {
     console.error('Notification permission not granted.');
