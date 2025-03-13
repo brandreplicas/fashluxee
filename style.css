@@ -293,7 +293,7 @@ img,video {
     .gallery-item,
     .gallery {
         width: auto;
-        margin: 0;
+        /* margin: 0; */
     }
 
     @media (max-width: 40rem) {
