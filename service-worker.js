@@ -7,6 +7,8 @@ self.addEventListener('install', event => {
         'style.css',
         'css.css',
         'script.js',
+        'init.js',
+        'service-worker.js',
         'fashluxee.jpg',
         'fashluxee-logo-transformed.png',
         'preview.jpg',
