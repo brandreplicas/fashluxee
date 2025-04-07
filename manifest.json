@@ -2,26 +2,26 @@
   "name": "Fashluxee",
   "short_name": "Fashluxee",
   "description": "One stop shop for your Superfinest and Supertop quality replica products",
-  "start_url": "/",
+  "start_url": "/carrd/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",
   "icons": [
     {
-      "src": "fashluxee-logo-transformed.png",
+      "src": "/carrd/fashluxee-logo-transformed.png",
       "sizes": "2081x1637",
       "type": "image/png"
     }
   ],
   "screenshots": [
     {
-      "src": "fashluxee-logo-transformed.png",
+      "src": "/carrd/fashluxee-logo-transformed.png",
       "sizes": "2081x1637",
       "type": "image/png",
       "label": "Fashluxee"
     }
   ],
-  "scope": "/",
+  "scope": "/carrd/",
   "orientation": "any",
   "related_applications": [],
   "prefer_related_applications": false
