@@ -17,15 +17,34 @@ if ('Notification' in window) {
 }
 // Function to send a notification
 function sendNotification(title, body) {
+  let urlToOpen = 'https://brandreplicas.github.io/carrd/gallery.html';
   if (Notification.permission === 'granted') {
-    new Notification(title, {
-      body: body,
-      icon: 'fashluxee-logo-transformed.png',
-      tag: 'stock-update',
+    const notification = new Notification(title, {
+      body: body
+      icon: 'fashluxee-logo-transformed.png'
     });
+
+    notification.onclick = function(event) {
+      event.preventDefault();
+
+      // Check if a tab with the URL is already open
+      window.chrome.tabs.query({ url: urlToOpen }, function(tabs) {
+        if (tabs && tabs.length > 0) {
+          // If a tab is found, focus on it
+          window.chrome.tabs.update(tabs[0].id, { active: true });
+        } else {
+          // If no tab is found, open a new one
+          window.open(urlToOpen, '_blank');
+        }
+      });
+
+      notification.close(); // Optionally close the notification
+    };
+
+    return notification;
   } else {
     console.error('Notification permission not granted.');
+    return null;
   }
 }
-
-// sendNotification('Luxury Update!', 'Handpicked luxury only for you');
+//sendNotification('Luxury Update!', 'Handpicked luxury only for you');
