@@ -13,7 +13,8 @@
     var noteEl = document.querySelector('#load-note');
     var resEl = document.querySelector('#no-result');
     var hadEl = document.querySelector('#last-result');
-    var datUrl = 'https://urlsml.in/carrd-db/cors';
+    //var datUrl = 'https://urlsml.in/carrd-db/cors';
+    var datUrl = 'http://tecq.free.nf/cors';
     var catUrl = datUrl + '/category-list.php';
     var medUrl = datUrl + '/media-list.php';
     var pos = 0;
