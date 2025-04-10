@@ -13,8 +13,8 @@
     var noteEl = document.querySelector('#load-note');
     var resEl = document.querySelector('#no-result');
     var hadEl = document.querySelector('#last-result');
-    //var datUrl = 'https://urlsml.in/carrd-db/cors';
-    var datUrl = 'http://tecq.free.nf/cors';
+    var datUrl = 'https://urlsml.in/carrd-db/cors';
+    //var datUrl = 'http://tecq.free.nf/cors';
     var catUrl = datUrl + '/category-list.php';
     var medUrl = datUrl + '/media-list.php';
     var pos = 0;
@@ -22,7 +22,6 @@
     fetch(catUrl)
     .then(response => {
         if (!response.ok) {
-            sendNotification('Network Error', 'Bad network response');
             throw new Error('Bad network response');
         }
         return response.json();
@@ -38,7 +37,6 @@
         loadMore();
     })
     .catch(error => {
-        sendNotification('Network Error', 'There was a problem fetching the category list');
         console.error('Category Error: There was a problem fetching the category list:', error);
     });
 
@@ -62,7 +60,6 @@
         fetch([medUrl,'?pos=',pos,'&cat_id=',cat_id,'&ts=',Date.now()].join(''))
         .then(response => {
             if (!response.ok) {
-                sendNotification('Network Error', 'Bad network response');
                 throw new Error('Bad network response');
             }
             return response.json();
@@ -109,7 +106,6 @@
             scroller();
         })
         .catch(error => {
-            sendNotification('Network Error', 'There was a problem fetching the gallery');
             console.error('Category Error: There was a problem fetching the gallery', error);
         });
     }
