@@ -18,38 +18,14 @@ self.addEventListener('periodicsync', event => {
 });
 
 async function checkForWebsiteUpdates() {
-  try {
-    const response = await fetch('/manifest.json?v=' + Date.now(), {
-      method: 'HEAD'
+  self.clients.matchAll().then(clients => {
+    clients.forEach(client => {
+      client.postMessage({ type: 'NEW_VERSION_AVAILABLE' });
     });
-
-    if (!response.ok) {
-      console.error('Failed to check for updates:', response.status);
-      return;
-    }
-
-    const currentVersion = localStorage.getItem('websiteVersion');
-    const newVersion = response.headers.get('ETag') || response.headers.get('Last-Modified');
-
-    if (newVersion && newVersion !== currentVersion) {
-      console.log('New website version detected:', newVersion);
-      localStorage.setItem('websiteVersion', newVersion);
-    } else {
-      console.log('No new website updates.');
-    }
-
-  } catch (error) {
-    console.error('Error checking for updates:', error);
-  }
+  });
 }
 
 // Example: Listen for the 'activate' event to inform the user on the next visit
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    self.clients.matchAll().then(clients => {
-      clients.forEach(client => {
-        client.postMessage({ type: 'NEW_VERSION_AVAILABLE' });
-      });
-    });
-  );
+  event.waitUntil(checkForWebsiteUpdates());
 });

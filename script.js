@@ -104,15 +104,6 @@
 
     document.addEventListener("scroll", scroller, false);
 
-    catEl.addEventListener("change", function(){
-        pos = 0;
-        listEl.innerHTML = '';
-        noteEl.classList.remove('d-none');
-        lastEl.classList.remove('d-none');
-        resEl.classList.add('d-none');
-        hadEl.classList.add('d-none');
-        loadMore();
-    }, false);
 
     document.addEventListener("DOMContentLoaded", function(){
         listEl = document.querySelector('.gallery');
@@ -122,6 +113,15 @@
         resEl = document.querySelector('#no-result');
         hadEl = document.querySelector('#last-result');
         lazyJs = document.querySelector('#lazyJs');
+        catEl.addEventListener("change", function(){
+            pos = 0;
+            listEl.innerHTML = '';
+            noteEl.classList.remove('d-none');
+            lastEl.classList.remove('d-none');
+            resEl.classList.add('d-none');
+            hadEl.classList.add('d-none');
+            loadMore();
+        }, false);
         loadNewScript(catUrl);
     }, false);   
 })();
