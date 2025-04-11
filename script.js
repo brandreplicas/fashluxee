@@ -7,18 +7,18 @@
     var poto = /(png|jpg|jpeg|gif|webp|bmp|tiff|svg)/;
     var pos = -1;
     var mail_to='mailto:brandreplicastore@gmail.com?cc=tanzil.memon03@gmail.com&subject=Catalog%20Product%20Enquiry&body=';
-    var listEl = document.querySelector('.gallery');
-    var lastEl = document.querySelector('.loader');
-    var catEl = document.querySelector('#cat');
-    var noteEl = document.querySelector('#load-note');
-    var resEl = document.querySelector('#no-result');
-    var hadEl = document.querySelector('#last-result');
+    var listEl = null;
+    var lastEl = null;
+    var catEl = null;
+    var noteEl = null;
+    var resEl = null;
+    var hadEl = null;
     var datUrl = 'http://tecq.free.nf/cors';
     var catUrl = datUrl + '/category-list.php';
     var medUrl = datUrl + '/media-list.php';
     var pos = 0;
     var moreLocked = false;
-    var lazyJs = document.getElementById('dynamicScript');
+    var lazyJs = null;
 
     function loadNewScript(src) {
       const newSrc = `$src?v=${Date.now()}`;
@@ -114,5 +114,14 @@
         loadMore();
     }, false);
 
-    loadNewScript(catUrl);
+    document.addEventListener("DOMContentLoaded", function(){
+        listEl = document.querySelector('.gallery');
+        lastEl = document.querySelector('.loader');
+        catEl = document.querySelector('#cat');
+        noteEl = document.querySelector('#load-note');
+        resEl = document.querySelector('#no-result');
+        hadEl = document.querySelector('#last-result');
+        lazyJs = document.querySelector('#lazyJs');
+        loadNewScript(catUrl);
+    }, false);   
 })();
