@@ -22,11 +22,11 @@
     var lazyJs = null;
 
     function loadNewScript(src) {
-      //var pe = lazyJs.parentNode;
-      //pe.removeChild(lazyJs);
+      var pe = lazyJs.parentNode;
+      pe.removeChild(lazyJs);
       lazyJs.removeAttribute('src');
       lazyJs.src = src+'?v='+Date.now();
-      //pe.appendChild(lazyJs);
+      pe.appendChild(lazyJs);
     }
 
     var push_medias = function (data){
