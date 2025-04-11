@@ -1,5 +1,5 @@
 'use strict';
-(function(){
+(function(window, document, undef){
     var msg = encodeURIComponent('Hi Fashluxee,\nI would like to talk about this item: \n\n ');
     var phone = '919503021689';
     var wsl = 'https://api.whatsapp.com/send?phone='+phone+'&text='+msg;
@@ -25,7 +25,7 @@
       lazyJs.src = src+'?v='+Date.now();
     }
 
-    function push_medias(data){
+    var push_medias = function (data){
         moreLocked = false;
         console.log('medias',data);
         if(!data.length){
@@ -65,10 +65,9 @@
             ].join('');
         });
         scroller();
-    }
-    window.push_medias = push_medias;
+    };
 
-    function push_categories(data){
+    var push_categories = function (data){
         console.log('categories',data);
         data.forEach(item => {
             var option = document.createElement('option');
@@ -77,8 +76,7 @@
             catEl.appendChild(option);
         });
         loadMore();
-    }
-    window.push_categories = push_categories;
+    };
 
     function outViewport(el){
         var rect = el.getBoundingClientRect();
@@ -104,9 +102,9 @@
         loadMore();
     }
 
+    window.push_medias = push_medias;
+    window.push_categories = push_categories;
     document.addEventListener("scroll", scroller, false);
-
-
     document.addEventListener("DOMContentLoaded", function(){
         listEl = document.querySelector('.gallery');
         lastEl = document.querySelector('.loader');
@@ -126,4 +124,4 @@
         }, false);
         loadNewScript(catUrl);
     }, false);   
-})();
+})(window, document);
