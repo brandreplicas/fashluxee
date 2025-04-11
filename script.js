@@ -121,7 +121,6 @@
         noteEl = document.querySelector('#load-note');
         resEl = document.querySelector('#no-result');
         hadEl = document.querySelector('#last-result');
-        lazyJs = document.querySelector('#lazyJs');
         catEl.addEventListener("change", function(){
             pos = 0;
             listEl.innerHTML = '';
