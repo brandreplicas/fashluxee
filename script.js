@@ -66,6 +66,7 @@
         });
         scroller();
     }
+    window.push_medias = push_medias;
 
     function push_categories(data){
         console.log('categories',data);
@@ -77,6 +78,7 @@
         });
         loadMore();
     }
+    window.push_categories = push_categories;
 
     function outViewport(el){
         var rect = el.getBoundingClientRect();
