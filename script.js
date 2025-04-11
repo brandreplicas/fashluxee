@@ -21,7 +21,7 @@
     var lazyJs = document.getElementById('dynamicScript');
 
     function loadNewScript(src) {
-      const newSrc = `${src}?v=${Date.now()}`;
+      const newSrc = `$src?v=${Date.now()}`;
       lazyJs.src = newSrc;
     }
 

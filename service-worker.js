@@ -1,21 +1,4 @@
-let cache_key = 'fashluxee-catalog';
 self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(cache_key).then(cache => {
-      return cache.addAll([
-        'gallery.html',
-        'index.html',
-        'style.css',
-        'css.css',
-        'script.js',
-        'init.js',
-        'service-worker.js',
-        'fashluxee.jpg',
-        'fashluxee-logo-transformed.png',
-        'preview.jpg'
-      ]);
-    })
-  );
   event.waitUntil(checkForWebsiteUpdates());
 });
 
