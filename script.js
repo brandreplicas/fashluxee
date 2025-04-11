@@ -21,8 +21,7 @@
     var lazyJs = null;
 
     function loadNewScript(src) {
-      const newSrc = `$src?v=${Date.now()}`;
-      lazyJs.src = newSrc;
+      lazyJs.src = src+'?v='+Date.now();
     }
 
     function push_medias(data){

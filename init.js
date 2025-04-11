@@ -1,12 +1,6 @@
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js').then(registration => {
     console.log('Service Worker registered with scope:', registration.scope);
-          // Request periodic background sync
-          registration.periodicSync.register('check-for-updates', {
-            minInterval: 12 * 60 * 60 * 1000,
-            networkState: 'online'
-          }).then(() => console.log('Periodic Background Sync registered!'))
-            .catch(error => console.error('Periodic Background Sync registration failed:', error));
   }).catch(error => {
     console.error('Service Worker registration failed:', error);
   });

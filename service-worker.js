@@ -1,15 +1,3 @@
-self.addEventListener('install', event => {
-  event.waitUntil(checkForWebsiteUpdates());
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
-      return cachedResponse || fetch(event.request);
-    })
-  );
-});
-
 self.addEventListener('periodicsync', event => {
   if (event.tag === 'check-for-updates') {
     console.log('Periodic Background Sync triggered!');
@@ -25,7 +13,42 @@ async function checkForWebsiteUpdates() {
   });
 }
 
-// Example: Listen for the 'activate' event to inform the user on the next visit
+
+self.addEventListener('install', event => {
+  console.log('Service Worker installing.');
+});
+
 self.addEventListener('activate', event => {
-  event.waitUntil(checkForWebsiteUpdates());
+  console.log('Service Worker activating.');
+  return self.clients.claim();
+});
+
+self.addEventListener('message', event => {
+  console.log('Service Worker received message:', event.data);
+  if (event.data === 'registration-successful') {
+    registerPeriodicSync();
+  }
+});
+
+async function registerPeriodicSync() {
+  if ('periodicSync' in self.registration) {
+    try {
+      await self.registration.periodicSync.register('check-for-updates', {
+        minInterval: 12 * 60 * 60 * 1000,
+        networkState: 'online'
+      });
+      console.log('Periodic Background Sync registered from Service Worker!');
+    } catch (error) {
+      console.error('Periodic Background Sync registration failed in Service Worker:', error);
+    }
+  } else {
+    console.log('Periodic Background Sync API not available.');
+  }
+}
+
+self.addEventListener('activate', event => {
+  event.waitUntil(async () => {
+    await self.clients.claim(); // Ensure the SW controls clients immediately
+    await registerPeriodicSync();
+  });
 });
