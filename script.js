@@ -23,7 +23,7 @@
     function loadNewScript(src) {
       var sel = 'lazy-js';
       var lazyJs = document.querySelector('.'+sel);
-      if(lazyJs && lazyJs.length){
+      if(lazyJs && lazyJs.parentNode){
         var pe = lazyJs.parentNode;
         pe.removeChild(lazyJs);
       }
