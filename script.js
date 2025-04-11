@@ -19,10 +19,17 @@
     var medUrl = datUrl + '/media-list.php';
     var pos = 0;
     var moreLocked = false;
-    var lazyJs = null;
 
     function loadNewScript(src) {
-      lazyJs.parentNode.removeChild(lazyJs);
+      var sel = 'lazy-js';
+      var lazyJs = document.querySelector('.'+sel);
+      if(lazyJs && lazyJs.length){
+        var pe = lazyJs.parentNode;
+        pe.removeChild(lazyJs);
+      }
+      lazyJs = document.createElement('script');
+      lazyJs.type = 'text/javascript';
+      lazyJs.className = sel;
       lazyJs.src = src+'?v='+Date.now();
       document.body.appendChild(lazyJs);
     }
