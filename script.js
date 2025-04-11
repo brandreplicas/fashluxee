@@ -13,7 +13,8 @@
     var noteEl = null;
     var resEl = null;
     var hadEl = null;
-    var datUrl = 'http://tecq.free.nf/cors';
+    // var datUrl = 'http://tecq.free.nf/cors';
+    var datUrl = 'https://urlsml.in/carrd-db/cors';
     var catUrl = datUrl + '/category-list.php';
     var medUrl = datUrl + '/media-list.php';
     var pos = 0;
