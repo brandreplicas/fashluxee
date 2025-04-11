@@ -1,6 +1,12 @@
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js').then(registration => {
     console.log('Service Worker registered with scope:', registration.scope);
+          // Request periodic background sync
+          registration.periodicSync.register('check-for-updates', {
+            minInterval: 12 * 60 * 60 * 1000,
+            networkState: 'online'
+          }).then(() => console.log('Periodic Background Sync registered!'))
+            .catch(error => console.error('Periodic Background Sync registration failed:', error));
   }).catch(error => {
     console.error('Service Worker registration failed:', error);
   });
@@ -20,7 +26,7 @@ function sendNotification(title, body) {
   let urlToOpen = 'https://brandreplicas.github.io/carrd/gallery.html';
   if (Notification.permission === 'granted') {
     const notification = new Notification(title, {
-      body: body
+      body: body,
       icon: 'fashluxee-logo-transformed.png'
     });
 
@@ -37,7 +43,6 @@ function sendNotification(title, body) {
           window.open(urlToOpen, '_blank');
         }
       });
-
       notification.close(); // Optionally close the notification
     };
 
@@ -47,4 +52,9 @@ function sendNotification(title, body) {
     return null;
   }
 }
-//sendNotification('Luxury Update!', 'Handpicked luxury only for you');
+
+navigator.serviceWorker.addEventListener('message', event => {
+   if (event.data && event.data.type === 'NEW_VERSION_AVAILABLE') {
+     sendNotification('Luxury Update!', 'Handpicked luxury only for you');
+   }
+});
