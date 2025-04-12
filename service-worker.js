@@ -17,6 +17,10 @@ async function checkForWebsiteUpdates() {
 
 self.addEventListener('install', event => {
   console.log('Service Worker installing.');
+  event.waitUntil(async () => {
+    await self.clients.claim(); // Ensure the SW controls clients immediately
+    await registerPeriodicSync();
+  });
 });
 
 self.addEventListener('activate', event => {
