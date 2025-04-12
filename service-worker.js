@@ -6,6 +6,7 @@ self.addEventListener('periodicsync', event => {
 });
 
 async function checkForWebsiteUpdates() {
+  console.log('Service checkForWebsiteUpdates');
   self.clients.matchAll().then(clients => {
     clients.forEach(client => {
       client.postMessage({ type: 'NEW_VERSION_AVAILABLE' });
@@ -31,6 +32,7 @@ self.addEventListener('message', event => {
 });
 
 async function registerPeriodicSync() {
+  console.log('Service registerPeriodicSync');
   if ('periodicSync' in self.registration) {
     try {
       await self.registration.periodicSync.register('check-for-updates', {
@@ -47,6 +49,7 @@ async function registerPeriodicSync() {
 }
 
 self.addEventListener('activate', event => {
+  console.log('Service Worker activating.');
   event.waitUntil(async () => {
     await self.clients.claim(); // Ensure the SW controls clients immediately
     await registerPeriodicSync();
