@@ -14,9 +14,8 @@
     var resEl = null;
     var hadEl = null;
     var datUrl = 'https://luxury.pythonanywhere.com';
-    // var datUrl = 'https://urlsml.in/carrd-db/cors';
-    var catUrl = datUrl + '/category-list.php';
-    var medUrl = datUrl + '/media-list.php';
+    var catUrl = datUrl + '/category-list';
+    var medUrl = datUrl + '/media-list';
     var pos = 0;
     var moreLocked = false;
 

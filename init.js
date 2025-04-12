@@ -26,17 +26,8 @@ function sendNotification(title, body) {
 
     notification.onclick = function(event) {
       event.preventDefault();
-
-      // Check if a tab with the URL is already open
-      window.chrome.tabs.query({ url: urlToOpen }, function(tabs) {
-        if (tabs && tabs.length > 0) {
-          // If a tab is found, focus on it
-          window.chrome.tabs.update(tabs[0].id, { active: true });
-        } else {
-          // If no tab is found, open a new one
-          window.open(urlToOpen, '_blank');
-        }
-      });
+      window.focus(); // Bring the browser window to the front (optional)
+      window.location.href = urlToOpen; // Open in the same tab
       notification.close(); // Optionally close the notification
     };
 
