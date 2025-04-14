@@ -63,12 +63,11 @@
             var email = mail_to + msg + link;
             listEl.innerHTML += [
                 '<div class="gallery-item" tabindex="0">',
-                media,
-                '<div class="gallery-item-info">',
-                    '<a class="d-link" target="_blank" href="',src,'">View</a><br/>',
-                    '<a class="d-link" target="_blank" href="',wa_link,'">WhatsApp</a>',
-                    '<a class="d-link" target="_blank" href="',email,'">Email</a>',
-                '</div>',
+                    media,
+                    '<div class="gallery-item-info">',
+                        '<a class="d-link" target="_blank" href="',wa_link,'">WhatsApp</a>',
+                        '<a class="d-link" target="_blank" href="',email,'">Email</a>',
+                    '</div>',
                 '</div>'
             ].join('');
         });

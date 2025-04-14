@@ -131,18 +131,21 @@ img,video {
 }
 
 .gallery-item:hover .gallery-item-info,
-.gallery-item:focus .gallery-item-info {
-    display: block;
+.gallery-item:focus .gallery-item-info,
+.gallery-item:active .gallery-item-info {
+    display: flex;
 }
 
 .gallery-item-info {
     display: none;
-		color: #fff;
-		font-size: 2rem;
+	color: #fff;
+	font-size: 2rem;
     position: absolute;
-    top: 100px;
+    top: 0px;
     width: 100%;
-		text-align: center;
+    height: 100%;
+	text-align: center;
+    flex-direction: column;
     background-color: rgba(0, 0, 0, 0.3);
 }
 
