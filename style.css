@@ -397,10 +397,12 @@ img,video {
     text-decoration: none;
     display: block;
     transition: background 0.3s;
+  }
+
+  .sidebar ul li,.sidebar ul li a {
     font-size: 1.6rem;
     line-height: 1.5;
   }
-
   /* When toggle is checked */
   #toggle:checked ~ .sidebar {
     left: 0;
