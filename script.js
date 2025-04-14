@@ -135,17 +135,29 @@
         tgl.checked = show;
     }
 
+    function invite_error(error){
+        sendNotification('Invitation Error', error);
+    }
     function on_invite(e){
         e.preventDefault();
         tgl_sidebar(false);
         try {
             const props = ['name', 'tel','email'];
             const opts = { multiple: true };
-            const contacts = await navigator.contacts.select(props, opts);
-            console.log('Selected contacts:'+ JSON.stringify(contacts));
-            sendNotification('Invitation','Selected contacts'+contacts.length);
+            navigator.contacts.select(props, opts)
+            .then((contacts) => {
+                if(contacts.length){
+                    console.log('Selected contacts: ' + JSON.stringify(contacts));
+                    sendNotification('Invitation Sent', 'Selected contacts: ' + contacts.length);
+                } else {
+                    invite_error('Missing contacts for invitation');
+                }
+            })
+            .catch((error) => {
+                invite_error('Error selecting contacts: ' + error);
+            });
         } catch (error) {
-            sendNotification('Invitation Error', 'Error selecting contacts:'+error);
+            invite_error('Error selecting contacts: ' + error);
         }
         return false;
     }
