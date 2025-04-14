@@ -14,7 +14,7 @@
     document.addEventListener('DOMContentLoaded',e => {
         let btn = document.getElementById("getContacts");
         let out = document.getElementById("output");
-        if (!navigator.hasOwnProperty('contacts') || !window.hasOwnProperty('ContactsManager')) {
+        if (!('contacts' in navigator) || !('ContactsManager' in window)) {
             btn.style.display = 'none';
             out.textContent = 'Contact Picker API not supported on this browser.';
             return;
