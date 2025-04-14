@@ -20,6 +20,7 @@
     var moreLocked = false;
     var cath = null;
     var tgl = null;
+    var invite = null;
 
     function loadNewScript(src) {
       var sel = 'lazy-js';
@@ -116,10 +117,40 @@
         cath.textContent = catEl.options[catEl.selectedIndex].text;
     }
 
-    window.push_medias = push_medias;
-    window.push_categories = push_categories;
-    document.addEventListener("scroll", scroller, false);
-    document.addEventListener("DOMContentLoaded", function(){
+    function on_category_changed(e){
+        e.preventDefault();
+        tgl_sidebar(false);
+        pos = 0;
+        listEl.innerHTML = '';
+        update_cat_text();
+        noteEl.classList.remove('d-none');
+        lastEl.classList.remove('d-none');
+        resEl.classList.add('d-none');
+        hadEl.classList.add('d-none');
+        loadMore();
+        return false;
+    }
+
+    function tgl_sidebar(show){
+        tgl.checked = show;
+    }
+
+    function on_invite(e){
+        e.preventDefault();
+        tgl_sidebar(false);
+        try {
+            const props = ['name', 'tel','email'];
+            const opts = { multiple: true };
+            const contacts = await navigator.contacts.select(props, opts);
+            console.log('Selected contacts:'+ JSON.stringify(contacts));
+            sendNotification('Invitation','Selected contacts'+contacts.length);
+        } catch (error) {
+            sendNotification('Invitation Error', 'Error selecting contacts:'+error);
+        }
+        return false;
+    }
+
+    function page_init(){
         listEl = document.querySelector('.gallery');
         lastEl = document.querySelector('.loader');
         catEl = document.querySelector('#cat');
@@ -128,24 +159,21 @@
         hadEl = document.querySelector('#last-result');
         cath = document.querySelector('#cath');
         tgl = document.querySelector('#toggle');
-        catEl.addEventListener("change", function(){
-            e.preventDefault();
-            tgl.checked = false;
-            pos = 0;
-            listEl.innerHTML = '';
-            update_cat_text();
-            noteEl.classList.remove('d-none');
-            lastEl.classList.remove('d-none');
-            resEl.classList.add('d-none');
-            hadEl.classList.add('d-none');
-            loadMore();
-            return false;
-        }, false);
+        invite = document.querySelector('#invite');
+        if (!('contacts' in navigator) || !('ContactsManager' in window)) {
+            invite.parentNode.classList.remove('d-none');
+        }
+        catEl.addEventListener("change", on_category_changed, false);
         cath.addEventListener('click', e => {
             e.preventDefault();
-            tgl.checked = !tgl.checked;
+            tgl_sidebar(!tgl.checked);
             return false;
         });
+        invite.addEventListener('click', on_invite, false);
         loadNewScript(catUrl);
-    }, false);   
+    }
+    window.push_medias = push_medias;
+    window.push_categories = push_categories;
+    document.addEventListener("scroll", scroller, false);
+    document.addEventListener("DOMContentLoaded", page_init, false);   
 })(window, document);
