@@ -84,6 +84,7 @@
             option.textContent = item.text;
             catEl.appendChild(option);
         });
+        update_cat_text();
         loadMore();
     };
 
@@ -111,6 +112,10 @@
         loadMore();
     }
 
+    function update_cat_text(){
+        cath.textContent = catEl.options[catEl.selectedIndex].text;
+    }
+
     window.push_medias = push_medias;
     window.push_categories = push_categories;
     document.addEventListener("scroll", scroller, false);
@@ -126,7 +131,7 @@
         catEl.addEventListener("change", function(){
             pos = 0;
             listEl.innerHTML = '';
-            cath.textContent = catEl.querySelector('option:selected').textContent;
+            update_cat_text();
             noteEl.classList.remove('d-none');
             lastEl.classList.remove('d-none');
             resEl.classList.add('d-none');
