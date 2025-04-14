@@ -18,6 +18,8 @@
     var medUrl = datUrl + '/media-list';
     var pos = 0;
     var moreLocked = false;
+    var cath = null;
+    var tgl = null;
 
     function loadNewScript(src) {
       var sel = 'lazy-js';
@@ -119,15 +121,23 @@
         noteEl = document.querySelector('#load-note');
         resEl = document.querySelector('#no-result');
         hadEl = document.querySelector('#last-result');
+        cath = document.querySelector('#cath');
+        tgl = document.querySelector('#toggle');
         catEl.addEventListener("change", function(){
             pos = 0;
             listEl.innerHTML = '';
+            cath.textContent = catEl.querySelector('option:selected').textContent;
             noteEl.classList.remove('d-none');
             lastEl.classList.remove('d-none');
             resEl.classList.add('d-none');
             hadEl.classList.add('d-none');
             loadMore();
         }, false);
+        cath.addEventListener('click', e => {
+            e.preventDefault();
+            tgl.checked = !tgl.checked;
+            return false;
+        });
         loadNewScript(catUrl);
     }, false);   
 })(window, document);
