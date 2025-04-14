@@ -14,21 +14,36 @@
     document.addEventListener('DOMContentLoaded',e => {
         let btn = document.getElementById("getContacts");
         let out = document.getElementById("output");
-        if (!('contacts' in navigator) || !('ContactsManager' in window)) {
-            btn.style.display = 'none';
-            out.textContent = 'Contact Picker API not supported on this browser.';
-            return;
+        function display(output){
+            out.textContent = output;
         }
-        btn.addEventListener("click", async () => {
+        function on_invite(e){
+            e.preventDefault();
             try {
                 const props = ['name', 'tel','email'];
                 const opts = { multiple: true };
-                const contacts = await navigator.contacts.select(props, opts);
-                out.textContent = 'Selected contacts:'+ JSON.stringify(contacts);
+                navigator.contacts.select(props, opts)
+                .then((contacts) => {
+                    if(contacts.length){
+                        display('Selected contacts: ' + JSON.stringify(contacts));
+                    } else {
+                        display('Missing contacts for invitation');
+                    }
+                })
+                .catch((error) => {
+                    display('Error selecting contacts: ' + error);
+                });
             } catch (error) {
-                out.textContent = 'Error selecting contacts:'+error;
+                display('Error selecting contacts: ' + error);
             }
-        });
+            return false;
+        }
+        if (!('contacts' in navigator) || !('ContactsManager' in window)) {
+            btn.style.display = 'none';
+            display('Contact Picker API not supported on this browser.');
+            return;
+        }
+        btn.addEventListener("click", on_invite,false);
     });
 
 </script>  
