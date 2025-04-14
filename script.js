@@ -173,7 +173,7 @@
         tgl = document.querySelector('#toggle');
         invite = document.querySelector('#invite');
         if (!('contacts' in navigator) || !('ContactsManager' in window)) {
-            invite.parentNode.classList.remove('d-none');
+            invite.parentNode.classList.add('d-none');
         }
         catEl.addEventListener("change", on_category_changed, false);
         cath.addEventListener('click', e => {
