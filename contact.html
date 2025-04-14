@@ -9,22 +9,28 @@
   <body>
 <h1>Contact Picker</h1>
 <button id="getContacts">Pick Contacts</button>
-
+<div id="output">Pick Contacts</div>
 <script>
-document.getElementById("getContacts").addEventListener("click", async () => {
-    if ('contacts' in navigator && 'ContactsManager' in window) {
-        try {
-            const props = ['name', 'tel','email'];
-            const opts = { multiple: true };
-            const contacts = await navigator.contacts.select(props, opts);
-            document.write("Selected contacts:", JSON.stringify(contacts));
-        } catch (error) {
-            document.write("Error selecting contacts:", error);
+    document.addEventListener('DOMContentLoaded',e => {
+        let btn = document.getElementById("getContacts");
+        let out = document.getElementById("output");
+        if (!navigator.hasOwnProperty('contacts') || !window.hasOwnProperty('ContactsManager')) {
+            btn.style.display = 'none';
+            out.textContent = 'Contact Picker API not supported on this browser.';
+            return;
         }
-    } else {
-        document.write("Contact Picker API not supported on this browser.");
-    }
-});
+        btn.addEventListener("click", async () => {
+            try {
+                const props = ['name', 'tel','email'];
+                const opts = { multiple: true };
+                const contacts = await navigator.contacts.select(props, opts);
+                out.textContent = 'Selected contacts:'+ JSON.stringify(contacts);
+            } catch (error) {
+                out.textContent = 'Error selecting contacts:'+error;
+            }
+        });
+    });
+
 </script>  
 </body>
 </html>
