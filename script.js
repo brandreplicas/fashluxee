@@ -129,6 +129,8 @@
         cath = document.querySelector('#cath');
         tgl = document.querySelector('#toggle');
         catEl.addEventListener("change", function(){
+            e.preventDefault();
+            tgl.checked = false;
             pos = 0;
             listEl.innerHTML = '';
             update_cat_text();
@@ -137,6 +139,7 @@
             resEl.classList.add('d-none');
             hadEl.classList.add('d-none');
             loadMore();
+            return false;
         }, false);
         cath.addEventListener('click', e => {
             e.preventDefault();
