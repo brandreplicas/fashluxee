@@ -263,8 +263,6 @@ img,video {
     }
 }
 
-/* Spinner Animation */
-
 @keyframes loader {
     to {
         transform: rotate(360deg);
@@ -272,19 +270,6 @@ img,video {
 }
 
 @supports (display: grid) {
-    /*
-    .profile {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: repeat(3, auto);
-        grid-column-gap: 3rem;
-        align-items: center;
-    }
-
-    .profile-image {
-        grid-row: 1 / -1;
-    }
-        */
 
     .gallery {
         display: grid;
@@ -300,38 +285,6 @@ img,video {
     .gallery {
         width: auto;
     }
-/*
-    @media (max-width: 40rem) {
-        .profile {
-            grid-template-columns: auto 1fr;
-            grid-row-gap: 1.5rem;
-        }
-
-        .profile-image {
-            grid-row: 1 / 2;
-        }
-
-        .profile-user-settings {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            grid-gap: 1rem;
-        }
-
-        .profile-edit-btn,
-        .profile-stats,
-        .profile-bio {
-            grid-column: 1 / -1;
-        }
-
-        .profile-user-settings,
-        .profile-edit-btn,
-        .profile-settings-btn,
-        .profile-bio,
-        .profile-stats {
-            margin: 0;
-        }
-    }
-        */
 }
 .gallery-item-info a{
     color: #fff;
@@ -343,8 +296,9 @@ img,video {
     text-align: center;
 }
 .d-link{
-    color: #4d90fe;
+    color: #4d90fe !important;
     text-decoration:none;
+    cursor: pointer;
 }
 .d-none{
     display: none;
