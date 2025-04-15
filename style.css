@@ -296,9 +296,10 @@ img,video {
     text-align: center;
 }
 .d-link{
-    color: #4d90fe !important;
-    text-decoration:none;
+    text-decoration:underline;
+    text-decoration-style: dotted;
     cursor: pointer;
+    color: #333;
 }
 .d-none{
     display: none;
@@ -349,13 +350,6 @@ img,video {
 
   .sidebar ul li {
     padding: 15px 20px;
-  }
-
-  .sidebar ul li a {
-    color: #000;
-    text-decoration: none;
-    display: block;
-    transition: background 0.3s;
   }
 
   .sidebar ul li,.sidebar ul li a {
