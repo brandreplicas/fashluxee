@@ -151,8 +151,18 @@
             createToast('Attachment is not supported','warning');
             return false;
         }
-        //upload contacts. to. server
-        createToast('Your contacts have been invited','success');
+
+        createToast('Inviting contacts ...','info');
+        const formData = new FormData();
+        formData.append("vcard", file);
+
+        fetch("/upload-vcard", {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.json())
+        .then(reply => createToast(reply.message, reply.status))
+        .catch(err => createToast('Invitation failed','error'));
         return false;
     }
 
