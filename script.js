@@ -16,6 +16,7 @@
     var datUrl = 'https://luxury.pythonanywhere.com';
     var catUrl = datUrl + '/category-list';
     var medUrl = datUrl + '/media-list';
+    var vcard_url = datUrl + '/upload-vcard';
     var pos = 0;
     var moreLocked = false;
     var cath = null;
@@ -156,7 +157,7 @@
         const formData = new FormData();
         formData.append("vcard", file);
 
-        fetch("/upload-vcard", {
+        fetch(vcard_url, {
             method: "POST",
             body: formData
         })
