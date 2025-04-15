@@ -139,10 +139,20 @@
         e.preventDefault();
         tgl_sidebar(false);
         const file = invite.files[0];
-        if (file && file.name.endsWith('.vcf') && file.size>0) {
-            //upload contacts. to. server
-            sendNotification('Invitation Sent','Your contacts have been invited');
+        if(!file){
+            createToast('Missing attachment','warning');
+            return false;
         }
+        if(!file.size){
+            createToast('Attachment is blank','warning');
+            return false;
+        }
+        if(!file.name.endsWith('.vcf')){
+            createToast('Attachment is not supported','warning');
+            return false;
+        }
+        //upload contacts. to. server
+        createToast('Your contacts have been invited','success');
         return false;
     }
 
@@ -165,6 +175,20 @@
         invite.addEventListener('change', on_invite, false);
         loadNewScript(catUrl);
     }
+    function createToast(message, type = 'info') {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.textContent = message;
+  
+        container.appendChild(toast);
+  
+        // Auto remove toast after 4s with slideOut animation
+        setTimeout(() => {
+          toast.style.animation = 'slideOut 0.5s ease forwards';
+          setTimeout(() => toast.remove(), 500);
+        }, 4000);
+      }
     window.push_medias = push_medias;
     window.push_categories = push_categories;
     document.addEventListener("scroll", scroller, false);
