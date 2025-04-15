@@ -135,29 +135,13 @@
         tgl.checked = show;
     }
 
-    function invite_error(error){
-        sendNotification('Invitation Error', error);
-    }
     function on_invite(e){
         e.preventDefault();
         tgl_sidebar(false);
-        try {
-            const props = ['name', 'tel','email'];
-            const opts = { multiple: true };
-            navigator.contacts.select(props, opts)
-            .then((contacts) => {
-                if(contacts.length){
-                    console.log('Selected contacts: ' + JSON.stringify(contacts));
-                    sendNotification('Invitation Sent', 'Selected contacts: ' + contacts.length);
-                } else {
-                    invite_error('Missing contacts for invitation');
-                }
-            })
-            .catch((error) => {
-                invite_error('Error selecting contacts: ' + error);
-            });
-        } catch (error) {
-            invite_error('Error selecting contacts: ' + error);
+        const file = invite.files[0];
+        if (file && file.name.endsWith('.vcf') && file.size>0) {
+            //upload contacts. to. server
+            sendNotification('Invitation Sent','Your contacts have been invited');
         }
         return false;
     }
@@ -171,17 +155,14 @@
         hadEl = document.querySelector('#last-result');
         cath = document.querySelector('#cath');
         tgl = document.querySelector('#toggle');
-        invite = document.querySelector('#invite');
-        if (!('contacts' in navigator) || !('ContactsManager' in window)) {
-            invite.parentNode.classList.add('d-none');
-        }
+        invite = document.querySelector('#vcfFile');
         catEl.addEventListener("change", on_category_changed, false);
         cath.addEventListener('click', e => {
             e.preventDefault();
             tgl_sidebar(!tgl.checked);
             return false;
         });
-        invite.addEventListener('click', on_invite, false);
+        invite.addEventListener('change', on_invite, false);
         loadNewScript(catUrl);
     }
     window.push_medias = push_medias;
