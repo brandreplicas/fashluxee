@@ -164,6 +164,7 @@
         .then(res => res.json())
         .then(reply => createToast(reply.message, reply.status))
         .catch(err => createToast('Invitation failed','error'));
+        invite.value='';
         return false;
     }
 
