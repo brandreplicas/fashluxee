@@ -75,8 +75,6 @@
               <div class="profile-bio">
                 <img src="fashluxee-logo-transformed.png" alt="Fashluxee" width="200"/>
               </div>
-          </div>
-          <div class="profile">
 	          <div class="profile-bio short">
 		          <xsl:value-of select="./head/short/@value" />
 	          </div>

@@ -185,9 +185,6 @@ img,video {
 /* Media Query */
 
 @media screen and (max-width: 40rem) {
-    .profile {
-        padding: 4rem 0;
-    }
 
     .profile::after {
         display: none;
