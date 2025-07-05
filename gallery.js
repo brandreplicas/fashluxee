@@ -67,9 +67,10 @@
             listEl.innerHTML += [
                 '<div class="gallery-item" tabindex="0">',
                     media,
-                    '<div class="gallery-item-info">',
-                        '<a class="d-link" target="_blank" href="',wa_link,'">WhatsApp</a>',
-                        '<a class="d-link" target="_blank" href="',email,'">Email</a>',
+                    '<div class="foot">',
+                        '<a class="icon chat" target="_blank" href="',wa_link,'"><img src="chat.svg" width="30"/></a>',
+                        '<a class="icon email" target="_blank" href="',email,'"><img src="email.svg" width="30"/></a>',
+                        '<a class="icon eye" target="_blank" href="',src,'"><img src="eye.svg" width="30"/></a>',
                     '</div>',
                 '</div>'
             ].join('');
@@ -79,24 +80,24 @@
 
     var push_categories = function (data){
         console.log('categories',data);
-				let catEl = document.querySelector('#cat');
-				var first = null;
+        let catEl = document.querySelector('#cat');
+        var first = null;
         data.forEach(item => {
             var list = document.createElement('li');
             catEl.appendChild(list);
             var a = document.createElement('a');
             list.appendChild(a);
-						a.className =  'd-link';
-						a.href =  "#";
-						a.setAttribute('data-val',item.value);
-						a.setAttribute('data-txt',item.text);
+            a.className =  'd-link';
+            a.href =  "#";
+            a.setAttribute('data-val',item.value);
+            a.setAttribute('data-txt',item.text);
             a.textContent = item.text;
-						a.onclick = on_category_changed;
-						if(!first){
-							first = a;
-						}
+            a.onclick = on_category_changed;
+            if(!first){
+                first = a;
+            }
         });
-				first.click();
+        first.click();
     };
 
     function outViewport(el){
@@ -153,12 +154,12 @@
         tgl = document.querySelector('#toggle');
         cath.addEventListener('click', e => {
             e.preventDefault();
-						let open = 'left-0';
-						if(catbar.classList.contains(open)){
-							catbar.classList.remove(open);
-						} else{
-							catbar.classList.add(open);	
-						}
+            let open = 'left-0';
+            if(catbar.classList.contains(open)){
+                catbar.classList.remove(open);
+            } else{
+                catbar.classList.add(open);	
+            }
             return false;
         });
         loadNewScript(catUrl);
@@ -166,5 +167,5 @@
     window.push_medias = push_medias;
     window.push_categories = push_categories;
     document.addEventListener("scroll", scroller, false);
-    document.addEventListener("DOMContentLoaded", page_init, false);   
+    document.addEventListener("DOMContentLoaded", page_init, false);
 })(window, document);
