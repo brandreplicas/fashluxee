@@ -55,18 +55,25 @@
              if(!poto.test(src)){
                 return;
             }
-            var file = src.split('/').pop();
-            var link = encodeURIComponent(src);
-            var wa_link = wsl + link;
-            var email = mail_to + msg + link;
-            var uuid = crypto.randomUUID().replaceAll('-','');
-            var group = (Array.isArray(src) && src.length > 1);
+            let file = src.split('/').pop();
+            let link = encodeURIComponent(src);
+            let wa_link = wsl + link;
+            let email = mail_to + msg + link;
+            let uuid = crypto.randomUUID().replaceAll('-','');
+            let url = src;
+            try{
+                let urls = JSON.parse(src);
+                src = urls;
+            }catch(e){
+                src = url;
+            }
+            let group = (Array.isArray(src) && src.length > 1);
             if(group){
-                var show = 0;
+                let show = 0;
                 put_group(src, uuid, show);
                 src = src[show];
             }
-            var html = [
+            let html = [
                 '<div class="gallery-item" tabindex="0">',
                     '<img id="',uuid,'" class="gallery-image"/>',
                     '<div class="foot">'
