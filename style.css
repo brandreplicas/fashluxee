@@ -129,7 +129,7 @@ img,video {
     position: relative;
     margin: 1rem;
     color: #fff;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .gallery-item:hover .gallery-item-info,
