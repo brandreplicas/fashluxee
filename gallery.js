@@ -59,7 +59,7 @@
             var link = encodeURIComponent(src);
             var wa_link = wsl + link;
             var email = mail_to + msg + link;
-            var uuid = crypto.randomUUID();
+            var uuid = crypto.randomUUID().replaceAll('-','');
             var group = (Array.isArray(src) && src.length > 1);
             if(group){
                 var show = 0;
