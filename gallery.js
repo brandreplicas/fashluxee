@@ -68,7 +68,7 @@
             }
             var html = [
                 '<div class="gallery-item" tabindex="0">',
-                    '<img id="',uuid,'" class="gallery-image"/>',
+                    '<img src="fashluxee-logo-transformed.png" id="',uuid,'" class="gallery-image"/>',
                     '<div class="foot">'
             ];
             if(group){
@@ -185,7 +185,7 @@
 
     function lazy_img(src, uuid){
         var el = document.getElementById(uuid);
-        el.src = 'fashluxee-logo-transformed.png';
+        //el.src = 'fashluxee-logo-transformed.png';
         var img = new Image();
         img.onload = function(){
             el.src = src;
