@@ -80,7 +80,7 @@
             ];
             if(group){
                 html.push(...[
-                        '<a class="icon left" href="#" onclick="left_img(\'',uuid,'\')" data-for="',uuid,'"><img src="left.svg" width="30"/></a>',
+                        '<a class="icon left" href="#!" onclick="left_img(\'',uuid,'\')" data-for="',uuid,'"><img src="left.svg" width="30"/></a>',
                 ]);
             }
             html.push(...[
@@ -90,7 +90,7 @@
             ]);
             if(group){
                 html.push(...[
-                        '<a class="icon right" href="#" onclick="right_img(\'',uuid,'\')" data-for="',uuid,'"><img src="right.svg" width="30"/></a>',
+                        '<a class="icon right" href="#!" onclick="right_img(\'',uuid,'\')" data-for="',uuid,'"><img src="right.svg" width="30"/></a>',
                 ]);
             }
             html.push(...[
