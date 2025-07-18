@@ -37,6 +37,8 @@ img,video {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+    max-width: 500px;
+    margin: 0px auto;
 }
 
 .profile::after {
@@ -129,7 +131,6 @@ img,video {
     position: relative;
     margin: 1rem;
     color: #fff;
-    /*overflow: hidden;*/
 }
 
 .gallery-item:hover .gallery-item-info,

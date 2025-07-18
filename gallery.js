@@ -80,7 +80,7 @@
             ];
             if(group){
                 html.push(...[
-                        '<a class="icon left" href="#!" onclick="left_img(\'',uuid,'\')" data-for="',uuid,'"><img src="left.svg" width="30"/></a>',
+                        '<a class="icon left" href="#" onclick="left_img(\'',uuid,'\')" data-for="',uuid,'"><img src="left.svg" width="30"/></a>',
                 ]);
             }
             html.push(...[
@@ -90,7 +90,7 @@
             ]);
             if(group){
                 html.push(...[
-                        '<a class="icon right" href="#!" onclick="right_img(\'',uuid,'\')" data-for="',uuid,'"><img src="right.svg" width="30"/></a>',
+                        '<a class="icon right" href="#" onclick="right_img(\'',uuid,'\')" data-for="',uuid,'"><img src="right.svg" width="30"/></a>',
                 ]);
             }
             html.push(...[
@@ -247,34 +247,3 @@
     document.addEventListener("scroll", scroller, false);
     document.addEventListener("DOMContentLoaded", page_init, false);
 })(window, document);
-
-function changeImage(direction) {
-  const img = document.getElementById('image');
-  const container = document.getElementById('image-container');
-
-  const newImg = document.createElement('img');
-  newImg.src = images[getNextIndex(direction)];
-  newImg.classList.add(direction === 'right' ? 'slide-in-right' : 'slide-in-left');
-  container.appendChild(newImg);
-
-  // Slide out the old image
-  img.classList.remove('active');
-  img.classList.add(direction === 'right' ? 'slide-out-left' : 'slide-out-right');
-
-  // Wait for transition to finish
-  setTimeout(() => {
-    img.remove(); // Remove the old image
-    newImg.classList.remove('slide-in-right', 'slide-in-left');
-    newImg.classList.add('active');
-    newImg.id = 'image';
-  }, 500); // match with CSS transition duration
-}
-
-function getNextIndex(direction) {
-  if (direction === 'right') {
-    current = (current + 1) % images.length;
-  } else {
-    current = (current - 1 + images.length) % images.length;
-  }
-  return current;
-}
