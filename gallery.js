@@ -68,7 +68,7 @@
             }
             var html = [
                 '<div class="gallery-item" tabindex="0">',
-                    '<img src="fashluxee-logo-transformed.png" id="',uuid,'" class="gallery-image"/>',
+                    '<img id="',uuid,'" class="gallery-image"/>',
                     '<div class="foot">'
             ];
             if(group){
@@ -183,13 +183,12 @@
         loadNewScript(catUrl);
     }
 
-    function lazy_img(src, uuid){
-        var el = document.getElementById(uuid);
-        //el.src = 'fashluxee-logo-transformed.png';
+    function lazy_img(src, id){
+        document.getElementById(id).src = 'fashluxee-logo-transformed.png';
         var img = new Image();
         img.onload = function(){
-            el.src = src;
-        }
+            document.getElementById(id).src = src;
+        };
         img.src = src;
     }
 
