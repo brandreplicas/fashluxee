@@ -129,6 +129,7 @@ img,video {
     position: relative;
     margin: 1rem;
     color: #fff;
+    overflow: hidden;
 }
 
 .gallery-item:hover .gallery-item-info,
@@ -167,6 +168,8 @@ img,video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
 }
 
 /* Loader */
@@ -433,3 +436,28 @@ box-shadow: 4px 3px 4px 0px;
 .icon.email{margin-left:5px;}
 .icon.left{float: left;}
 .icon.right{float: right;}
+
+  .slide-out-left {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  .slide-out-right {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  .slide-in-left {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  .slide-in-right {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  .active {
+    transform: translateX(0%);
+    opacity: 1;
+  }
