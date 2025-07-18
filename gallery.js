@@ -184,7 +184,7 @@
     }
 
     function lazy_img(src, uuid){
-        var el = document.querySelector('#'+uuid);
+        var el = document.getElementById(uuid);
         el.src = 'fashluxee-logo-transformed.png';
         var img = new Image();
         img.onload = function(){
