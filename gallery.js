@@ -205,10 +205,12 @@
             'urls':urls,
             'show':show
         }
+        /*
         for(var i in urls){
             let o = new Image();
             o.src = urls[i];
         }
+        */
     }
 
     function left_img(uuid){
