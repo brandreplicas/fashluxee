@@ -547,8 +547,9 @@
         <div class="gallery" id="gallery">
             <!-- Items injected here -->
         </div>
+        <div id="sentinel" class="h-2 w-full"></div>
         <div id="loader" class="loader"></div>
-        <p id="load-note" class="text-center text-muted-foreground mt-4">
+        <p id="load-note" class="text-center text-muted-foreground mt-4 hidden">
             Please <a href="javascript:location.reload()" class="text-accent underline">click to refresh</a>, if you see this message for more than 2 seconds.
         </p>
         <p id="no-result" class="text-center hidden py-20 text-muted-foreground tracking-widest uppercase">Nothing found here. Please try different category.</p>
@@ -835,10 +836,12 @@
         let moreLocked = false;
         let lightboxState = { images: [], currentIndex: 0 };
         let slideStates = new Map();
+        let noteTimeout;
 
         // JSONP Callback
         window.push_medias = function(data) {
             moreLocked = false;
+            clearTimeout(noteTimeout);
             loader.classList.add('hidden');
             document.getElementById('load-note').classList.add('hidden');
 
@@ -904,6 +907,14 @@
 
                 if (isGroup) slideStates.set(uuid, 0);
             });
+
+            // Mobile-friendly refill check: if the sentinel is still within reach, load more
+            setTimeout(() => {
+                const sentinel = document.getElementById('sentinel');
+                if (sentinel && sentinel.getBoundingClientRect().top < window.innerHeight + 1200) {
+                    loadMore();
+                }
+            }, 300);
         };
 
         window.push_categories = function(data) {
@@ -926,6 +937,8 @@
                     cat_item = item;
                     pos = 0;
                     listEl.innerHTML = '';
+                    document.getElementById('no-result').classList.add('hidden');
+                    document.getElementById('last-result').classList.add('hidden');
                     loader.classList.remove('hidden');
                     loadMore();
                 };
@@ -937,9 +950,29 @@
 
         function loadMore() {
             if (moreLocked || !cat_item) return;
+            
+            // Check if end reached
+            if (!document.getElementById('no-result').classList.contains('hidden') || 
+                !document.getElementById('last-result').classList.contains('hidden')) return;
+
             moreLocked = true;
+            loader.classList.remove('hidden');
+            
+            clearTimeout(noteTimeout);
+            noteTimeout = setTimeout(() => {
+                if (moreLocked) {
+                    loader.classList.add('hidden');
+                    document.getElementById('load-note').classList.remove('hidden');
+                }
+            }, 5000);
+
             const script = document.createElement('script');
             script.src = `${medUrl}?pos=${pos}&cat_id=${cat_item.value}&ts=${Date.now()}`;
+            script.onerror = () => {
+                moreLocked = false;
+                loader.classList.add('hidden');
+                document.getElementById('load-note').classList.remove('hidden');
+            };
             document.body.appendChild(script);
         }
 
@@ -1004,10 +1037,18 @@
             }
         };
 
-        // Infinite Scroll
-        window.onscroll = function() {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) loadMore();
-        };
+        // Infinite Scroll with IntersectionObserver (Modern & Mobile Optimized)
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                loadMore();
+            }
+        }, { 
+            rootMargin: '1200px',
+            threshold: 0
+        });
+        
+        const sentinel = document.getElementById('sentinel');
+        if (sentinel) observer.observe(sentinel);
 
         // Load Categories
         const script = document.createElement('script');
