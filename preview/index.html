@@ -10,7 +10,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -81,10 +83,13 @@
         }
 
         @keyframes twinkle {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 0.3;
                 transform: scale(0.8);
             }
+
             50% {
                 opacity: 1;
                 transform: scale(1.1);
@@ -96,6 +101,7 @@
                 opacity: 0;
                 transform: scale(0.96);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -110,6 +116,7 @@
         ::-webkit-scrollbar {
             display: none;
         }
+
         body {
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -117,7 +124,8 @@
     </style>
 </head>
 
-<body class="font-inter bg-background text-foreground overflow-hidden w-screen h-screen flex flex-col justify-between relative">
+<body
+    class="font-inter bg-background text-foreground overflow-hidden w-screen h-screen flex flex-col justify-between relative">
 
     <!-- Background Stars -->
     <!-- Blinking Stars -->
@@ -198,11 +206,12 @@
     <!-- Top Navigation Overlays -->
     <header class="relative z-50 w-full px-6 py-6 flex justify-between items-center pointer-events-none">
         <!-- Back Button -->
-        <a href="javascript:void(0)" 
-           onclick="if(document.referrer && document.referrer.indexOf(window.location.host) !== -1) { history.back(); } else { window.location.href='https://fashluxee.com/gallery'; }"
-           class="pointer-events-auto group flex items-center gap-3 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md hover:bg-accent/15 hover:border-accent/40 text-white transition-all duration-300 shadow-lg"
-           title="Go Back">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <a href="javascript:void(0)"
+            onclick="if(document.referrer && document.referrer.indexOf(window.location.host) !== -1) { history.back(); } else { window.location.href='https://fashluxee.com/gallery'; }"
+            class="pointer-events-auto group flex items-center gap-3 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md hover:bg-accent/15 hover:border-accent/40 text-white transition-all duration-300 shadow-lg"
+            title="Go Back">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             <span class="text-xs tracking-[0.2em] font-light uppercase hidden sm:inline">Back</span>
@@ -211,24 +220,22 @@
         <!-- Right Side Actions -->
         <div class="pointer-events-auto flex gap-3">
             <!-- Share on WhatsApp -->
-            <a id="whatsapp-btn" 
-               href="#" 
-               target="_blank"
-               class="w-11 h-11 rounded-full bg-green-500/10 border border-green-500/20 backdrop-blur-md flex items-center justify-center text-green-400 hover:bg-green-500 hover:text-white transition-all duration-300 shadow-lg hover:scale-105"
-               title="Inquire on WhatsApp">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            <a id="whatsapp-btn" href="#" target="_blank"
+                class="w-11 h-11 rounded-full bg-green-500/10 border border-green-500/20 backdrop-blur-md flex items-center justify-center text-green-400 hover:bg-green-500 hover:text-white transition-all duration-300 shadow-lg hover:scale-105"
+                title="Inquire on WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                 </svg>
             </a>
 
             <!-- Download -->
-            <a id="download-btn" 
-               href="#" 
-               download
-               target="_blank"
-               class="d-none hidden w-11 h-11 rounded-full bg-accent/10 border border-accent/20 backdrop-blur-md flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-all duration-300 shadow-lg hover:scale-105"
-               title="Download Image">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a id="download-btn" href="#" download target="_blank"
+                class="d-none hidden w-11 h-11 rounded-full bg-accent/10 border border-accent/20 backdrop-blur-md flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-all duration-300 shadow-lg hover:scale-105"
+                title="Download Image">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4" />
                     <polyline points="7 10 12 15 17 10" />
                     <line x1="12" y1="15" x2="12" y2="3" />
@@ -239,34 +246,34 @@
 
     <!-- Main Content Image Display -->
     <main class="flex-1 flex items-center justify-center relative px-4 md:px-24 z-10 select-none">
-        
+
         <!-- Left Carousel Navigation Button -->
-        <button id="prev-btn" 
-                onclick="prevSlide()" 
-                class="absolute left-6 md:left-12 z-20 hidden w-12 h-12 rounded-full bg-white/5 border border-white/10 hover:bg-accent/20 hover:border-accent/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg backdrop-blur-sm"
-                title="Previous Image">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <button id="prev-btn" onclick="prevSlide()"
+            class="absolute left-6 md:left-12 z-20 hidden w-12 h-12 rounded-full bg-white/5 border border-white/10 hover:bg-accent/20 hover:border-accent/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg backdrop-blur-sm"
+            title="Previous Image">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
         </button>
 
         <!-- Image Container -->
-        <div class="animate-preview relative max-w-full max-h-[75vh] flex flex-col items-center justify-center bg-white/[0.01] border border-white/5 rounded-2xl p-3 md:p-5 backdrop-blur-xs shadow-2xl">
-            <img src="" 
-                 alt="Luxury Item Preview" 
-                 class="max-h-[66vh] md:max-h-[68vh] max-w-full object-contain rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.85)] pointer-events-auto cursor-zoom-in transition-all duration-300 hover:scale-[1.015] opacity-100"
-                 id="preview-image" />
-            
+        <div
+            class="animate-preview relative max-w-full max-h-[75vh] flex flex-col items-center justify-center bg-white/[0.01] border border-white/5 rounded-2xl p-3 md:p-5 backdrop-blur-xs shadow-2xl">
+            <img src="" alt="Luxury Item Preview"
+                class="max-h-[66vh] md:max-h-[68vh] max-w-full object-contain rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.85)] pointer-events-auto cursor-zoom-in transition-all duration-300 hover:scale-[1.015] opacity-100"
+                id="preview-image" />
+
             <!-- Bullet Pagination indicators -->
             <div id="bullets-container" class="absolute bottom-6 flex justify-center gap-2.5 z-20"></div>
         </div>
 
         <!-- Right Carousel Navigation Button -->
-        <button id="next-btn" 
-                onclick="nextSlide()" 
-                class="absolute right-6 md:right-12 z-20 hidden w-12 h-12 rounded-full bg-white/5 border border-white/10 hover:bg-accent/20 hover:border-accent/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg backdrop-blur-sm"
-                title="Next Image">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <button id="next-btn" onclick="nextSlide()"
+            class="absolute right-6 md:right-12 z-20 hidden w-12 h-12 rounded-full bg-white/5 border border-white/10 hover:bg-accent/20 hover:border-accent/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg backdrop-blur-sm"
+            title="Next Image">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
         </button>
@@ -274,15 +281,69 @@
 
     <!-- Bottom Signature -->
     <footer class="relative z-50 w-full text-center pb-8 pt-4 pointer-events-none">
-        <span class="text-white/20 text-[10px] tracking-[0.6em] uppercase font-light pointer-events-auto hover:text-accent transition-colors duration-300">
+        <span
+            class="text-white/20 text-[10px] tracking-[0.6em] uppercase font-light pointer-events-auto hover:text-accent transition-colors duration-300">
             Fashluxee Premium Collection
         </span>
     </footer>
 
     <!-- Carousel & Interactive logic -->
     <script>
-        const images = JSON.parse( Object.fromEntries(new URLSearchParams(location.search))['urls']);
+        let images = [];
         let currentIndex = 0;
+
+        try {
+            // 1. Try parsing from pathname (e.g. /preview/https%3A%2F%2F...)
+            const pathSegments = location.pathname.split('/preview/');
+            if (pathSegments.length > 1 && pathSegments[1]) {
+                const rawPathImg = pathSegments[1];
+                const cleanImg = rawPathImg.replace(/^index\.html\//, '');
+                if (cleanImg && cleanImg !== 'index.html') {
+                    let decodedImg = cleanImg;
+                    if (decodedImg.includes('%')) {
+                        decodedImg = decodeURIComponent(decodedImg);
+                    }
+                    if (decodedImg.includes('%')) {
+                        decodedImg = decodeURIComponent(decodedImg);
+                    }
+                    images = [decodedImg];
+                }
+            }
+
+            // 2. Try search parameter fallback
+            if (images.length === 0) {
+                const searchParams = new URLSearchParams(location.search);
+                let urlsParam = searchParams.get('urls') || searchParams.get('url');
+                if (urlsParam) {
+                    if (urlsParam.includes('%')) {
+                        urlsParam = decodeURIComponent(urlsParam);
+                    }
+                    if (urlsParam.includes('%')) {
+                        urlsParam = decodeURIComponent(urlsParam);
+                    }
+                    try {
+                        images = JSON.parse(urlsParam);
+                    } catch(jsonErr) {
+                        images = [urlsParam];
+                    }
+                }
+            }
+        } catch (e) {
+            console.error("Error parsing preview image urls:", e);
+        }
+
+        if (!Array.isArray(images) || images.length === 0) {
+            images = [];
+        }
+
+        // Initialize currentIndex from the active index query parameter if available
+        try {
+            const params = new URLSearchParams(location.search);
+            const indexParam = parseInt(params.get('index')) || 0;
+            currentIndex = (indexParam >= 0 && indexParam < images.length) ? indexParam : 0;
+        } catch (e) {
+            currentIndex = 0;
+        }
 
         const imgEl = document.getElementById('preview-image');
         const prevBtn = document.getElementById('prev-btn');
@@ -302,14 +363,15 @@
                 bulletsContainer.innerHTML = '';
                 images.forEach((_, index) => {
                     const dot = document.createElement('div');
-                    dot.className = `w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${index === 0 ? 'bg-[#c8a97e] scale-125 shadow-[0_0_8px_#c8a97e]' : 'bg-white/30 hover:bg-white/60'}`;
+                    dot.className =
+                        `w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${index === currentIndex ? 'bg-[#c8a97e] scale-125 shadow-[0_0_8px_#c8a97e]' : 'bg-white/30 hover:bg-white/60'}`;
                     dot.onclick = () => goToSlide(index);
                     bulletsContainer.appendChild(dot);
                 });
             } else {
                 bulletsContainer.classList.add('hidden');
             }
-            updateSlide(0);
+            updateSlide(currentIndex);
         }
 
         // Transition slide smoothly with subtle opacity fade
@@ -324,8 +386,10 @@
                 const activeSrc = images[currentIndex];
                 imgEl.src = activeSrc;
 
-                // Update Action Buttons URL
-                const waMessage = "Hi Fashluxee,\nI would like to talk about this item:\n" + encodeURIComponent(location.href);
+                // Update Action Buttons URL (preserve full carousel via urls param, set index)
+                const queryStr = `?urls=${encodeURIComponent(JSON.stringify(images))}${images.length > 1 ? `&index=${currentIndex}` : ''}`;
+                const previewUrl = location.origin + "/preview" + queryStr;
+                const waMessage = "Hi Fashluxee,\nI would like to talk about this item: \n\n \n" + previewUrl;
                 whatsappBtn.href = "https://api.whatsapp.com/send?phone=919503021689&text=" + encodeURIComponent(waMessage);
                 downloadBtn.href = activeSrc;
 
@@ -333,9 +397,11 @@
                 if (images.length > 1) {
                     Array.from(bulletsContainer.children).forEach((dot, idx) => {
                         if (idx === currentIndex) {
-                            dot.className = "w-2 h-2 rounded-full cursor-pointer transition-all duration-300 bg-[#c8a97e] scale-125 shadow-[0_0_8px_#c8a97e]";
+                            dot.className =
+                                "w-2 h-2 rounded-full cursor-pointer transition-all duration-300 bg-[#c8a97e] scale-125 shadow-[0_0_8px_#c8a97e]";
                         } else {
-                            dot.className = "w-2 h-2 rounded-full cursor-pointer transition-all duration-300 bg-white/30 hover:bg-white/60";
+                            dot.className =
+                                "w-2 h-2 rounded-full cursor-pointer transition-all duration-300 bg-white/30 hover:bg-white/60";
                         }
                     });
                 }
